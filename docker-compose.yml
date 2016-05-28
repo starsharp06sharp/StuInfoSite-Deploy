@@ -1,0 +1,22 @@
+stuinfosite-nginx: 
+    restart: always
+    container_name: stuinfosite-nginx
+    ports: 
+        - "80:80"
+    links: 
+        - stuinfosite:uwsgi
+    volumes_from: 
+        - stuinfosite
+    image: daocloud.io/starsharp06sharp/stuinfosite-nginx
+stuinfosite: 
+    restart: always
+    container_name: stuinfosite
+    links: 
+        - stuinfosite-db:db
+    volumes: 
+        - /StuInfoSite
+    image: daocloud.io/starsharp06sharp/stuinfosite
+stuinfosite-db:
+    restart: always
+    container_name: stuinfosite-db
+    image: daocloud.io/starsharp06sharp/stuinfosite-db
