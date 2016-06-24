@@ -8,6 +8,14 @@ stuinfosite-nginx:
     volumes_from: 
         - stuinfosite
     image: daocloud.io/starsharp06sharp/stuinfosite-nginx
+stuinfosite-db:
+    restart: always
+    container_name: stuinfosite-db
+    volumes: 
+        - /var/lib/mysql
+    environment: 
+        - MYSQL_ROOT_PASSWORD=zl
+    image: daocloud.io/starsharp06sharp/stuinfosite-db
 stuinfosite: 
     restart: always
     container_name: stuinfosite
@@ -16,7 +24,3 @@ stuinfosite:
     volumes: 
         - /StuInfoSite
     image: daocloud.io/starsharp06sharp/stuinfosite
-stuinfosite-db:
-    restart: always
-    container_name: stuinfosite-db
-    image: daocloud.io/starsharp06sharp/stuinfosite-db
